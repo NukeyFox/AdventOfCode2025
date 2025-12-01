@@ -1,0 +1,16 @@
+{
+  "name": "Haskell Codespace",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "settings": {
+    "haskell.formattingProvider": "ormolu",
+    "editor.formatOnSave": true
+  },
+  "extensions": [
+    "haskell.haskell",
+    "justusadam.language-haskell"
+  ],
+  "postCreateCommand": "/home/vscode/.ghcup/bin/ghcup --version || true && /home/vscode/.ghcup/bin/ghcup install hls || true && /home/vscode/.cabal/bin/cabal update || true",
+  "remoteUser": "vscode"
+}
