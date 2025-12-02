@@ -1,6 +1,3 @@
--- use runghc to execute this file
-import Control.Monad.State (State)
-
 commandToInt :: String -> Int
 commandToInt ('L' : xs) = -(read xs :: Int)
 commandToInt ('R' : xs) = read xs :: Int
