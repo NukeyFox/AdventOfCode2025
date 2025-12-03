@@ -5,6 +5,7 @@ nub list = nubHelper list []
       | x `elem` acc = nubHelper xs acc
       | otherwise = nubHelper xs (x : acc)
 
+splitOn :: (Foldable t, Eq a) => a -> t a -> [[a]]
 splitOn sep = foldr step [[]]
   where
     step c acc
@@ -14,6 +15,7 @@ splitOn sep = foldr step [[]]
 parseInput :: String -> [(String, String)]
 parseInput input = map ((\(x : y : _) -> (x, y)) . splitOn '-') (splitOn ',' input)
 
+splitKWays :: [Char] -> Int -> [[Char]]
 splitKWays str k = splitKWaysHelper str k "" []
   where
     splitKWaysHelper "" _ acc ret = acc : ret
@@ -22,6 +24,7 @@ splitKWays str k = splitKWaysHelper str k "" []
       | otherwise = splitKWaysHelper xs k (x : acc) ret
     splitLength = length str `div` k
 
+nthSplit :: [Char] -> Int -> Maybe [[Char]]
 nthSplit string n
   | len < n = Nothing
   | len `mod` n /= 0 = Nothing
