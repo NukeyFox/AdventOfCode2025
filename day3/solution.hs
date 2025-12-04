@@ -18,9 +18,7 @@ buildMaxSubstring k s
   where
     digits = map digitToInt s
     n = length digits
-    pow10 = listArray (0, k) [10 ^ i | i <- [0 .. k]]
-    boundsArr = ((0, 0), (n, k))
-    dp = array boundsArr [((pos, rem), entry pos rem) | pos <- [0 .. n], rem <- [0 .. k]]
+    dp = array ((0, 0), (n, k)) [((pos, rem), entry pos rem) | pos <- [0 .. n], rem <- [0 .. k]]
 
     entry :: Int -> Int -> Maybe Int
     entry _ 0 = Just 0
@@ -33,7 +31,7 @@ buildMaxSubstring k s
         takeVal =
           case dp ! (pos + 1, rem - 1) of
             Nothing -> Nothing
-            Just v -> Just (digits !! pos * pow10 ! (rem - 1) + v)
+            Just v -> Just (digits !! pos * 10 ^ (rem - 1) + v)
 
 partOne = sum . map (fromMaybe 0 . buildMaxSubstring 2)
 
