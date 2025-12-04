@@ -32,7 +32,7 @@ removePaper (count, state) = (count + length rem, foldl (//) state (map ((: []) 
 
 partOne = length . getRemovablePaper
 
-partTwo arr = fst $ until (null . getRemovablePaper . snd) removePaper (0, arr)
+partTwo = fst . until (null . getRemovablePaper . snd) removePaper . (0,)
 
 main :: IO ()
 main = do
