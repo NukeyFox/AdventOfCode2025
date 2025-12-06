@@ -29,7 +29,11 @@ parseInputPartTwo =
     . lines
 
 solve :: ([String], [[String]]) -> Int
-solve = sum . map (uncurry foldl1) . uncurry zip . bimap (map funcParse) (map (map read))
+solve =
+  sum
+    . map (uncurry foldl1)
+    . uncurry zip
+    . bimap (map funcParse) (map (map read))
 
 main :: IO ()
 main = do
